@@ -16,13 +16,9 @@ public class Tennis {
      */
     public static void main(String[] args) {
         Player playerOne = new Player();
-        System.out.println( playerOne.getScore() );
-        playerOne.addPoint();
-        System.out.println( playerOne.getScore() );
-        playerOne.addPoint();
-        System.out.println( playerOne.getScore() );
-        playerOne.addPoint();
-        System.out.println( playerOne.getScore() );
+        Player playerTwo = new Player();
+        Game match = new Game(playerOne,playerTwo);
+        match.Start();
     }
     
 }
