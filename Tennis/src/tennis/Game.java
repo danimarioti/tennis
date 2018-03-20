@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tennis;
 
 import java.util.SplittableRandom;
 
 /**
- *
- * @author udesc
+ * Classe responsável pela lógica e controle do jogo
+ * @author DanielaMarioti
  */
 class Game {
     private final Player playerOne;
@@ -17,17 +12,28 @@ class Game {
     private boolean type_score; //se false -> score , se true -> score_doa
     private SplittableRandom random;
     
+     /**
+     * Método construtor do jogo.  
+     * Recebe como parâmetros 2 jogadores.
+     * Apresenta valor default: type_score=false.
+     */
+    
     public Game(Player P1,Player P2){
-        this.random = new SplittableRandom();
+        this.random = new SplittableRandom(); //Instância desplittableRandom.Números aleatórios não uniformes
         this.playerOne=P1;
         this.playerTwo=P2;
-        this.type_score=false;
+        this.type_score=false; // Valor padrão
     }
     
+    /**
+     * Método de pontuação dos jogadores
+     * Adiciona a pontuação do jogador,de acordo com o return.
+     * @return false, para jogador1 e true, para jogador2 
+     */
     private boolean MakePoint(){ 
         int n;
-        n = random.nextInt();
-        if(n%2==0){
+        n = random.nextInt(); // gera próximo número aleatório
+        if(n%2==0){  // jogador1 
             System.out.println("Jogador 1 fez ponto");
             if(playerTwo.getScore_DoA()==Score_DoA.ADVANTAGE){   
                 playerOne.deuce();
@@ -37,7 +43,7 @@ class Game {
             }
             return false; //jogador 1 fez ponto
         }
-        else{
+        else{ //jogador2
             System.out.println("Jogador 2 fez ponto");
             if(playerOne.getScore_DoA()==Score_DoA.ADVANTAGE){
                 playerOne.deuce();
@@ -49,6 +55,10 @@ class Game {
         }
     }
     
+     /**
+     * Métodos de verificação do vencedor
+     * Segue o padrão, de acordo com as 4 regras do jogo de tênis.  
+     */
     private boolean Finished(){
         if(type_score &&  playerOne.getScore_DoA()==Score_DoA.ADVANTAGE && !MakePoint()){
             System.out.println("Jogador 1 ganhou o jogo");
@@ -69,16 +79,23 @@ class Game {
         return false;
     }
     
+     /**
+     * Métodos de troca de score
+     * Segundo as regras do jogo de tênis, troca o score para score_doa.
+     */
     private void ChangeTypeScore(){
         if(((playerOne.getScore()==Score.THIRTY) || (playerOne.getScore()==Score.FORTY)) && ((playerTwo.getScore()==Score.THIRTY) || (playerTwo.getScore()==Score.FORTY))){
-            type_score=true;
+            type_score=true; // Score_DoA
         }
         else{
-            type_score=false;
+            type_score=false; // Score
         }
     }
     
-    private void PrintScore(){
+     /**
+     * Método que imprime o score do jogo
+     */
+    private void PrintScore(){ 
         if(!type_score){
             System.out.println("SCORE: "+playerOne.getScore()+" x " + playerTwo.getScore());
         }
@@ -98,24 +115,24 @@ class Game {
     
     public void Start(){
         while(!Finished()){
-            if(!type_score){
-                if(!MakePoint()){
-                    playerOne.addPoint();
+            if(!type_score){ // score
+                if(!MakePoint()){ //jogador1
+                    playerOne.addPoint(); //add +1 
                 }
                 else{
-                    playerTwo.addPoint();
+                    playerTwo.addPoint(); // add +1
                 }
-                ChangeTypeScore();
+                ChangeTypeScore(); // verifica a necessidade de troca de score
             }
-            else{
-                if(playerOne.getScore_DoA()==Score_DoA.DEUCE){
-                    if(!MakePoint()){
-                        playerOne.addPointDoA();
-                        playerTwo.lostPointDoA();
+            else{ //score_doa
+                if(playerOne.getScore_DoA()==Score_DoA.DEUCE){ //empate
+                    if(!MakePoint()){ //jogador1
+                        playerOne.addPointDoA(); // em vantagem
+                        playerTwo.lostPointDoA(); // em desvantagem
                     }
                     else{
-                        playerOne.lostPointDoA();
-                        playerTwo.addPointDoA();
+                        playerOne.lostPointDoA(); // em desvantagem
+                        playerTwo.addPointDoA(); // em vantagem
                     }
                 }                
             }
