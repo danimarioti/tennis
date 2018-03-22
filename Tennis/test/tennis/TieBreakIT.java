@@ -13,20 +13,18 @@ import static org.junit.Assert.*;
  *
  * @author DanielaMarioti
  */
-public class Score_DoAIT {
+public class TieBreakIT {
     
-    public Score_DoAIT() {
+    public TieBreakIT(){
     }
     
-     /**
-     * Test of values method, of class Score_DoA.
-     */
     @Test
     public void testValues() {
         System.out.println("values");
-        Score_DoA[] expResult = null;
-        Score_DoA[] result = Score_DoA.values();
+        TieBreak[] expResult = null;
+        TieBreak[] result = TieBreak.values();
         assertThat(expResult, IsNot.not(IsEqual.equalTo(result)));
     }
+    
     
 }

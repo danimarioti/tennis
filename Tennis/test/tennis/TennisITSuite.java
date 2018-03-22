@@ -12,7 +12,7 @@ import org.junit.runners.Suite;
  * @author DanielaMarioti
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({tennis.TennisIT.class, tennis.Score_DoAIT.class, tennis.PlayerIT.class, tennis.ScoreIT.class})
+@Suite.SuiteClasses({tennis.TennisIT.class, tennis.TieBreak.class, tennis.PlayerIT.class, tennis.ScoreIT.class})
 public class TennisITSuite {
 
     @BeforeClass

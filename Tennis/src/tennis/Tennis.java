@@ -4,20 +4,22 @@
 package tennis;
 
 /**
- *Classe principal
+ * Classe principal
+ *
  * @author DanielaMarioti
  */
 public class Tennis {
-    
+
     /**
      * Método principal
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Player playerOne = new Player();
         Player playerTwo = new Player();
-        Game match = new Game(playerOne,playerTwo);
-        match.Start();
+        Game game = new Game(playerOne, playerTwo);
+        game.start();
     }
-    
+
 }

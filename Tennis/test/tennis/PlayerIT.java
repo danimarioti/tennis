@@ -45,14 +45,13 @@ public class PlayerIT {
      * Test of addPointDoA method, of class Player.
      */
     @Test
-    public void testAddPointDoA() {
-        System.out.println("addPointDoA");
+    public void testAddPointTieBreak() {
+        System.out.println("addTieBreak");
         Player instance = new Player();
         instance.addPointDoA();
-        assertNotEquals(Score_DoA.DEUCE,instance.getScore_DoA());
-        assertNotEquals(Score_DoA.DISADVANTAGE,instance.getScore_DoA());
-        assertEquals(Score_DoA.ADVANTAGE,instance.getScore_DoA());
-        
+        assertNotEquals("deuce",instance.getTieBreak());
+        assertNotEquals("disadvantage",instance.getTieBreak());
+        assertEquals("advantage",instance.getTieBreak());
     }
 
     /**
@@ -63,9 +62,9 @@ public class PlayerIT {
         System.out.println("lostPointDoA");
         Player instance = new Player();
         instance.lostPointDoA();
-        assertNotEquals(Score_DoA.DEUCE,instance.getScore_DoA());        
-        assertNotEquals(Score_DoA.ADVANTAGE,instance.getScore_DoA());  
-        assertEquals(Score_DoA.DISADVANTAGE,instance.getScore_DoA());
+        assertNotEquals("deuce",instance.getTieBreak());        
+        assertNotEquals("advantage",instance.getTieBreak());  
+        assertEquals("disadvantage",instance.getTieBreak());
     }
 
     /**
@@ -76,19 +75,19 @@ public class PlayerIT {
         System.out.println("deuce");
         Player instance = new Player();
         Player instance2 = new Player();
-        assertEquals(instance.getScore_DoA(),Score_DoA.DEUCE);
-        assertEquals(instance.getScore_DoA(),instance2.getScore_DoA());
+        assertEquals(instance.getTieBreak(),"deuce");
+        assertEquals(instance.getTieBreak(),instance2.getTieBreak());
     }
 
     /**
      * Test of getScore_DoA method, of class Player.
      */
     @Test
-    public void testGetScore_DoA() {
-        System.out.println("getScore_DoA");
+    public void testGetTieBreak() {
+        System.out.println("getTieBreak");
         Player instance = new Player();
-        Score_DoA expResult = null;
-        Score_DoA result = instance.getScore_DoA();
+        TieBreak expResult = null;
+        TieBreak result = instance.getTieBreak();
         assertNotEquals(expResult, result);
     }
     

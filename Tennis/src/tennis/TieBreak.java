@@ -6,26 +6,26 @@ package tennis;
  * @author DanielaMarioti
  */
 
-public enum Score_DoA {
+public enum TieBreak {
     DEUCE("deuce"),ADVANTAGE("advantage"),DISADVANTAGE("disadvantage");
-    private final String score_doa;
+    private final String tieBreak;
     
-    private static final Score_DoA[] listaDeValoresPossiveis = values();
+    private static final TieBreak[] listaDeValoresPossiveis = values();
 
     /**
-     * Método construtor da classe Score_DoA
+     * Método construtor da classe TieBreak
      * @param score_deuce_or_advantage
      */
-    Score_DoA(String score_doa) {
-        this.score_doa = score_doa;
+    TieBreak(String tieBreak) {
+        this.tieBreak = tieBreak;
     }
     
     /**
-     * @return score_doa 
+     * @return tieBreak 
      */
     @Override
     public String toString() {
-        return score_doa;
+        return tieBreak;
     }
 
 }
