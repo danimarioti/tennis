@@ -142,7 +142,7 @@ public class Set {
                         playerOne.lostPointDoA(); // em desvantagem
                         playerTwo.addPointDoA(); // em vantagem
                     }
-                    advantage = true;
+                    advantage = false;
                 } else {
                     if (playerOne.getTieBreak() == TieBreak.ADVANTAGE && playerMakePoint) {// jogador 2 fez ponto
                         playerOne.deuce();
@@ -151,12 +151,13 @@ public class Set {
                     } else if (playerTwo.getTieBreak() == TieBreak.ADVANTAGE && !playerMakePoint) { // jogador 1 fez ponto
                         playerOne.deuce();
                         playerTwo.deuce();
-                        advantage = false;
                     } else {
                         if (isFinished()) {
                             return;
                         }
-                    };
+                        
+                        advantage = true;
+                    }
                 }
             }
             changeTypeScore(); // verifica a necessidade de troca de score
